@@ -94,6 +94,21 @@ address {
     font-style: normal;
 }
 
+/*==========Hidden==========*/
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
 
 /* ==========Site nav========== */
 
@@ -217,20 +232,6 @@ address {
     margin-left: 50px;
 }
 
-/*==========Hidden==========*/
-
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
-    white-space: nowrap;
-    clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden;
-}
 
 /* ==========index.html========== */
 /* ==========Site main========== */
@@ -751,6 +752,8 @@ address {
     z-index: 100;
     background-color: rgba(0, 0, 0, 0.2);
 
+    opacity: 1;
+
     transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
     visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -761,18 +764,24 @@ address {
     pointer-events: none; 
 }
 
+.backdrop.is-hidden .modal {
+    transform: translate(-50%, -50%) scale(0.5);
+}
+
 .modal {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1.1); 
     
     min-height: 581px;
     min-width: 528px;
     
     background-color: var(--primari-white-color);
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;  
+    border-radius: 4px; 
+    
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-close-button {
